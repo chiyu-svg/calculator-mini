@@ -1,0 +1,7 @@
+html, body, div, a, p, ul {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background-color: #f2f2e3;
+}
