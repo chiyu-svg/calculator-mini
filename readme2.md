@@ -29,7 +29,7 @@ python
 就拿 if 条件语句来说，当if(true) 时才会执行语句内的内容。很明显括号中是布尔类型。所以我们有理由在使用 if 之类语句的时候
 要使用布尔类型。
 通常逻辑判断表达式会返回一个布尔类型，比如 a > b, a < b, a !== b, !a 当然还有直接赋值 a = true/false
-这是重点: 有些编程语言在使用类似条件语句判断时会隐式的转换成布尔类型
+这是重点: 有些编程语言在使用类似条件语句判断时会隐式的转换成布尔类型。转换规则是把表示空/不存在的数据转换成 false 其它都转换成 true
 JavaScript
 let n = 1;
 if(n) {
@@ -46,13 +46,46 @@ else:
     print("false")
 python 中 “0”, "0.0", [], {} 之类都会被转成false
 
-rustic
+Rust
+fn main() {
+    let option_value: Option<i32> = None;
+    if let Some(value) = option_value {
+        println!("{}", value);
+    } else {
+        println!("none");
+    }
+}
+可见 Rust 中并没隐式转换，甚至都没有空的概念，而是考虑一个值可能存在空值的情况，并进行做处理。 不愧为语言层次上的安全语言
+5. 如何优雅的字符串反转
+如何反转一个字符串或者一个数组，在编程领域有着非常大的作用，仔细想想好像又没有什么作用，那为什么要记录下来呢？是因为
+在学习python的时候被切片的好用给震惊了那么一下下，特此记录一下表达自己对编程的那么一丢丢热爱
+JavaScript
+let slogan = "hello world";
+let re_slogan = slogan.split('').reverse().join('');
+// 先分割成数组之后在反转拼接，js 够优雅
 
-3. 字符串拼接
-4. 按索引取字符串的
-5. 字符串反转
-6. 数据类型转换
-7. 判断值是否相等
+python3
+方式1
+slogan = "hello world"
+re_slogan = ''.join(reversed(slogan))
+// 与 js 的一样的方式，优雅
+
+方式2
+slogan = "hello world"
+re_slogan = slogan[::-1]
+// 这是让我感觉到惊讶的地方，优雅之上
+
+Rust
+fn main() {
+    let slogan = "hello world";
+    let re_slogn: String = slogan.chars().rev().collect();
+    println!("{}", re_slogn);
+}
+// 注意Rust的字符串组成不是字符而是字节的，所以第一步要切割成字符迭代器，在进行反转。 
+
+总结：优雅程度上来讲，这波站 python
+
+
 8. 连续做逻辑运算
 9. 成员和身份判断
 10. 效率改善条件语句

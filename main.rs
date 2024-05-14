@@ -1,5 +1,5 @@
 fn main() {
-    let number: f64 = 3.14159;
-    let number = (number * 1000.0).round() / 1000.0;
-    println!("{}", number);
+    let slogan = "hello world";
+    let re_slogn: String = slogan.chars().rev().collect();
+    println!("{}", re_slogn);
 }
