@@ -19,7 +19,35 @@ python
   num = Decimal("3.1415926").quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
   print(num)
   # Decimal 可以指定精度来更精确的运算
-2. 类型转换成布尔值
+2. 布尔类型的隐式转换以及在条件语句的应用
+每个编程语言都会有布尔类型，用来表示 true/false 从而做条件语句的执行逻辑判断。
+举例:
+    let num = 10;
+    if(num > 5) {
+        console.log("num 大于 5")
+    }
+就拿 if 条件语句来说，当if(true) 时才会执行语句内的内容。很明显括号中是布尔类型。所以我们有理由在使用 if 之类语句的时候
+要使用布尔类型。
+通常逻辑判断表达式会返回一个布尔类型，比如 a > b, a < b, a !== b, !a 当然还有直接赋值 a = true/false
+这是重点: 有些编程语言在使用类似条件语句判断时会隐式的转换成布尔类型
+JavaScript
+let n = 1;
+if(n) {
+    console.log('执行了')
+}
+在执行的时候if(n) 的 n 被隐式转换成了布尔类型
+注意：当 a = "0", a = [], a = {} 会隐式转换成 true 不是 false
+
+python3
+list = []
+if list:
+    print("true")
+else:
+    print("false")
+python 中 “0”, "0.0", [], {} 之类都会被转成false
+
+rustic
+
 3. 字符串拼接
 4. 按索引取字符串的
 5. 字符串反转
