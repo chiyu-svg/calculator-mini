@@ -1,5 +1,4 @@
 fn main() {
-    let slogan = "hello world";
-    let re_slogn: String = slogan.chars().rev().collect();
-    println!("{}", re_slogn);
+    let score: u8 = 80;
+    println!("{}", 90 > score >= 80);
 }
